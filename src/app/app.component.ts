@@ -5,5 +5,4 @@ import { Component } from '@angular/core';
   template: '<store></store>',
 })
 export class AppComponent {
-  title = 'SportsStore';
 }
