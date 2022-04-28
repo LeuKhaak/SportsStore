@@ -1,4 +1,4 @@
-<div class="pull-xs-right">
+<div class="pull-xs-right" style="color: #fff; padding-right: 10px;">
 	<small>
 		Your cart:
 		<span *ngIf="cart.itemCount > 0">
@@ -9,7 +9,8 @@
 			(empty)
 		</span>
 	</small>
-	<button class="btn btn-sm bg-inverse" [disabled]="cart.itemCount == 0">
+	<button class="btn btn-sm bg-inverse" [disabled]="cart.itemCount == 0" routerLink="/cart"
+		style="background-color: #fff">
 		<i class="fa fa-shopping-cart"></i>
 	</button>
 </div>
