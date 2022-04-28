@@ -17,10 +17,10 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2017",
-    "module": "es2020",
+    "module": "commonjs",
 		"types": ["node"],
     "lib": [
-      "es2020",
+      "es2017",
       "dom"
     ]
   },

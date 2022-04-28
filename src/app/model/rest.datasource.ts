@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Request, RequestMethod } from '@angular/http';
-import { Observable } from 'rxjs';
+//import { Observable } from 'rxjs/Observable';
+import * as Rx from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Product } from './product.model';
 import { Cart } from './cart.model';
@@ -14,17 +15,17 @@ export class RestDataSource {
   constructor(private http: Http) {
     this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}/`;
   }
-  getProducts(): Observable<Product | Order> {
+  getProducts(): Rx.Observable<Product | Order> {
     return this.sendRequest(RequestMethod.Get, 'products');
   }
-  saveOrder(order: Product): Observable<Product | Order> {
+  saveOrder(order: Product): Rx.Observable<Product | Order> {
     return this.sendRequest(RequestMethod.Post, 'orders', order);
   }
   private sendRequest(
     verb: RequestMethod,
     url: string,
     body?: Product | Order
-  ): Observable<Product | Order> {
+  ): Rx.Observable<Product | Order> {
     return this.http
       .request(
         new Request({
