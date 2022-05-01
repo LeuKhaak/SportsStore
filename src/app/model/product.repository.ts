@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Product } from './product.model';
 import { StaticDataSource } from './static.datasource';
 import { RestDataSource } from './rest.datasource';
-import { map } from 'rxjs/operators';
+//import { map } from 'rxjs/operators';
 @Injectable()
 export class ProductRepository {
-  private products: Product | Product[] = [];
+  private products: Product[] = [];
   private categories: (string | undefined)[] = [];
   constructor(private dataSource: RestDataSource) {
     dataSource.getProducts().subscribe((data) => {
@@ -31,7 +31,7 @@ export class ProductRepository {
     if (product.id == null || product.id == 0) {
       this.dataSource
         .saveProduct(product)
-        .subscribe((p) => this.products.push(p));
+        .subscribe((p) => this.products.push(product)); // было this.products.push(p) - ошибка
     } else {
       this.dataSource.updateProduct(product).subscribe((p) => {
         this.products.splice(

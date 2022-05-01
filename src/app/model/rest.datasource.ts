@@ -33,13 +33,13 @@ export class RestDataSource {
         })
       );
   }
-  getProducts(): Rx.Observable<Product | Product[]> {
+  getProducts(): Rx.Observable<Product[]> {
     return this.sendRequest(RequestMethod.Get, 'products');
   }
-  saveProduct(product: Product): Rx.Observable<Product | Product[]> {
+  saveProduct(product: Product): Rx.Observable<Product[]> {
     return this.sendRequest(RequestMethod.Post, 'products', product, true);
   }
-  updateProduct(product: any): Rx.Observable<Product | Product[]> {
+  updateProduct(product: any): Rx.Observable<Product[]> {
     return this.sendRequest(
       RequestMethod.Put,
       `products/${product.id}`,
@@ -47,7 +47,7 @@ export class RestDataSource {
       true
     );
   }
-  deleteProduct(id: number): Rx.Observable<Product | Product[]> {
+  deleteProduct(id: number): Rx.Observable<Product[]> {
     return this.sendRequest(
       RequestMethod.Delete,
       `products/${id}`,
@@ -55,10 +55,10 @@ export class RestDataSource {
       true
     ); // я заменил null на undefined, иначе - ошибка
   }
-  getOrders(): Rx.Observable<Product | Product[]> {
+  getOrders(): Rx.Observable<Product[]> {
     return this.sendRequest(RequestMethod.Get, 'orders', undefined, true);
   }
-  deleteOrder(id: number): Rx.Observable<Product | Product[]> {
+  deleteOrder(id: number): Rx.Observable<Product[]> {
     return this.sendRequest(
       RequestMethod.Delete,
       `orders/${id}`,
@@ -66,7 +66,7 @@ export class RestDataSource {
       true
     );
   }
-  updateOrder(order: Order): Rx.Observable<Product | Product[]> {
+  updateOrder(order: Order): Rx.Observable<Product[]> {
     return this.sendRequest(
       RequestMethod.Put,
       `orders/${order.id}`,
@@ -74,9 +74,7 @@ export class RestDataSource {
       true
     );
   }
-  saveOrder(
-    order: Product
-  ): Rx.Observable<Product | Product[] | Order | Order[]> {
+  saveOrder(order: Product): Rx.Observable<Product[]> {
     return this.sendRequest(RequestMethod.Post, 'orders', order);
   }
 
@@ -85,7 +83,7 @@ export class RestDataSource {
     url: string,
     body?: Product | Order,
     auth: boolean = false
-  ): Rx.Observable<Product | Product[]> {
+  ): Rx.Observable<Product[]> {
     let request = new Request({
       method: verb,
       url: this.baseUrl + url,
