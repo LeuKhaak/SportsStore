@@ -35,8 +35,10 @@ export class Cart {
     this.itemCount = 0;
     this.cartPrice = 0;
     this.lines.forEach((l) => {
-      this.itemCount += l.quantity;
-      this.cartPrice += l.product.price ? l.quantity * l.product.price : 0; // object is possibly undefined
+      if (l.product &&  l.product.price) {
+        this.itemCount += l.quantity;
+        this.cartPrice += l.quantity * l.product.price;
+      }// object is possibly undefined
     });
   }
 }

@@ -8,6 +8,7 @@ import { CartSummaryComponent } from './cartSummary.component';
 import { CartDetailComponent } from './cartDetail.component';
 import { CheckoutComponent } from './checkout.component';
 import { RouterModule } from '@angular/router';
+import { PokemonComponent } from './pokemon/pokemon.component';
 @NgModule({
   imports: [ModelModule, BrowserModule, FormsModule, RouterModule],
   declarations: [
@@ -16,6 +17,7 @@ import { RouterModule } from '@angular/router';
     CartSummaryComponent,
     CartDetailComponent,
     CheckoutComponent,
+    PokemonComponent,
   ],
   exports: [StoreComponent, CartDetailComponent, CheckoutComponent],
 })
